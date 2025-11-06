@@ -1,0 +1,132 @@
+1.Array Operations
+
+Program:
+
+#include <stdio.h>
+
+void display(int arr[], int n) {
+    printf("Array elements: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int insert(int arr[], int n, int pos, int val) {
+    if (pos > n || pos < 0) {
+        printf("Invalid position!\n");
+        return n;
+    }
+    for (int i = n; i > pos; i--)
+        arr[i] = arr[i - 1];
+    arr[pos] = val;
+    n++;
+    printf("Element inserted successfully.\n");
+    return n;
+}
+
+int delete(int arr[], int n, int pos) {
+    if (pos >= n || pos < 0) {
+        printf("Invalid position!\n");
+        return n;
+    }
+    for (int i = pos; i < n - 1; i++)
+        arr[i] = arr[i + 1];
+    n--;
+    printf("Element deleted successfully.\n");
+    return n;
+}
+
+void search(int arr[], int n, int val) {
+    int found = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == val) {
+            printf("Element %d found at position %d\n", val, i + 1);
+            found = 1;
+            break;
+        }
+    }
+    if (!found)
+        printf("Element not found!\n");
+}
+
+int main() {
+    int arr[50], n, choice, pos, val;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for (int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    do {
+        printf("\n--- Array Operations Menu ---\n");
+        printf("1. Display\n2. Insert\n3. Delete\n4. Search\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                display(arr, n);
+                break;
+            case 2:
+                printf("Enter position (0-based index) and value: ");
+                scanf("%d %d", &pos, &val);
+                n = insert(arr, n, pos, val);
+                break;
+            case 3:
+                printf("Enter position (0-based index) to delete: ");
+                scanf("%d", &pos);
+                n = delete(arr, n, pos);
+                break;
+            case 4:
+                printf("Enter value to search: ");
+                scanf("%d", &val);
+                search(arr, n, val);
+                break;
+            case 5:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice!\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+
+
+Output:
+
+Enter number of elements: 4
+Enter 4 elements: 10 20 30 40
+     
+      Array Operations 
+1. Display
+2. Insert
+3. Delete
+4. Search
+5. Exit
+Enter your choice: 1
+Array elements: 10 20 30 40
+
+Enter your choice: 2
+Enter position (1 to 5): 3
+Enter value to insert: 25
+Element inserted.
+
+Enter your choice: 1
+Array elements: 10 20 25 30 40
+
+Enter your choice: 3
+Enter position (1 to 5): 2
+Element deleted.
+
+Enter your choice: 1
+Array elements: 10 25 30 40
+
+Enter your choice: 4
+Enter element to search: 30
+Element found at position 3
+
+Enter your choice: 5
+Exiting program.

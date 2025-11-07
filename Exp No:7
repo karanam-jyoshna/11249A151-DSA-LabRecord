@@ -1,0 +1,120 @@
+Queue using linked list
+
+Program:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node *front = NULL, *rear = NULL;
+
+
+void enqueue(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (rear == NULL) {
+        front = rear = newNode;
+        printf("%d inserted into the queue.\n", value);
+        return;
+    }
+
+    rear->next = newNode;
+    rear = newNode;
+    printf("%d inserted into the queue.\n", value);
+}
+
+
+void dequeue() {
+    if (front == NULL) {
+        printf("Queue is empty. Cannot dequeue.\n");
+        return;
+    }
+
+    struct Node* temp = front;
+    printf("%d deleted from the queue.\n", front->data);
+    front = front->next;
+
+    if (front == NULL)
+        rear = NULL;
+
+    free(temp);
+}
+
+
+void display() {
+    if (front == NULL) {
+        printf("Queue is empty.\n");
+        return;
+    }
+
+    struct Node* temp = front;
+    printf("Queue elements: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+
+int main() {
+    int choice, value;
+    while (1) {
+        printf("\n--- Queue Menu ---\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+    return 0;
+}
+
+
+Output:
+
+--- Queue Menu ---
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to insert: 10
+10 inserted into the queue.
+
+Enter your choice: 1
+Enter value to insert: 20
+20 inserted into the queue.
+
+Enter your choice: 3
+Queue elements: 10 -> 20 -> NULL
+
+Enter your choice: 2
+10 deleted from the queue.
+
+Enter your choice: 3
+Queue elements: 20 -> NULL
+

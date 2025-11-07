@@ -1,0 +1,83 @@
+Postfix Evaluation
+
+
+program:
+
+
+#include <stdio.h>
+#include <ctype.h>  
+
+#define SIZE 100
+
+int stack[SIZE];
+int top = -1;
+
+void push(int value) {
+    if (top < SIZE - 1)
+        stack[++top] = value;
+    else
+        printf("Stack Overflow!\n");
+}
+
+int pop() {
+    if (top == -1)
+        return -1;
+    else
+        return stack[top--];
+}
+
+int main() {
+    char exp[SIZE];
+    char *e;
+    int n1, n2, n3, num;
+
+    printf("Enter Postfix Expression: ");
+    scanf("%s", exp);
+
+    e = exp;
+    while (*e != '\0') {
+        if (isdigit(*e)) {
+           
+            num = *e - '0';
+            push(num);
+        } else {
+            n1 = pop();
+            n2 = pop();
+
+            switch (*e) {
+                case '+':
+                    n3 = n2 + n1;
+                    break;
+                case '-':
+                    n3 = n2 - n1;
+                    break;
+                case '*':
+                    n3 = n2 * n1;
+                    break;
+                case '/':
+                    n3 = n2 / n1;
+                    break;
+                case '^': {
+                    n3 = 1;
+                    for (int i = 0; i < n1; i++)
+                        n3 *= n2;
+                    break;
+                }
+                default:
+                    printf("Invalid operator: %c\n", *e);
+                    return 1;
+            }
+            push(n3);
+        }
+        e++;
+    }
+
+    printf("Result of Postfix Evaluation: %d\n", pop());
+    return 0;
+}
+
+
+Output:
+
+Enter Postfix Expression: 231*+9-
+Result of Postfix Evaluation: -4

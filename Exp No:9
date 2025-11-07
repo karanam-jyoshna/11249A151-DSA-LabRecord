@@ -1,0 +1,150 @@
+Doubly Linked list
+
+Program:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+
+void insertEnd(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+
+    if (head == NULL) {
+        head = newNode;
+        printf("%d inserted as first node.\n", value);
+        return;
+    }
+
+    struct Node* temp = head;
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newNode;
+    newNode->prev = temp;
+
+    printf("%d inserted at the end.\n", value);
+}
+
+
+void deleteBegin() {
+    if (head == NULL) {
+        printf("List is empty. Nothing to delete.\n");
+        return;
+    }
+
+    struct Node* temp = head;
+    head = head->next;
+
+    if (head != NULL)
+        head->prev = NULL;
+
+    printf("Node with value %d deleted.\n", temp->data);
+    free(temp);
+}
+
+
+void displayForward() {
+    struct Node* temp = head;
+    if (temp == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    printf("Doubly Linked List (Forward): ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+
+void displayReverse() {
+    struct Node* temp = head;
+    if (temp == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+   
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    printf("Doubly Linked List (Reverse): ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->prev;
+    }
+    printf("NULL\n");
+}
+
+
+int main() {
+    int choice, value;
+    while (1) {
+        printf("\n--- Doubly Linked List Menu ---\n");
+        printf("1. Insert at End\n2. Delete from Beginning\n3. Display Forward\n4. Display Reverse\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                insertEnd(value);
+                break;
+            case 2:
+                deleteBegin();
+                break;
+            case 3:
+                displayForward();
+                break;
+            case 4:
+                displayReverse();
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+    return 0;
+}
+
+Output:
+
+--- Doubly Linked List Menu ---
+1. Insert at End
+2. Delete from Beginning
+3. Display Forward
+4. Display Reverse
+5. Exit
+Enter your choice: 1
+Enter value to insert: 10
+10 inserted as first node.
+
+Enter your choice: 1
+Enter value to insert: 20
+20 inserted at the end.
+
+Enter your choice: 3
+Doubly Linked List (Forward): 10 <-> 20 <-> NULL
+
+Enter your choice: 4
+Doubly Linked List (Reverse): 20 <-> 10 <-> NULL
+
+Enter your choice: 2
+Node with value 10 deleted.
+

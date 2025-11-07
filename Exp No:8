@@ -1,0 +1,115 @@
+Singly Linked list
+
+Program:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+struct Node *head = NULL;
+
+
+void insert(int value) {
+    struct Node *newNode, *temp;
+    newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (head == NULL)
+        head = newNode;
+    else {
+        temp = head;
+        while (temp->next != NULL)
+            temp = temp->next;
+        temp->next = newNode;
+    }
+    printf("%d inserted into the list.\n", value);
+}
+
+
+void delete() {
+    struct Node *temp;
+    if (head == NULL)
+        printf("List is empty! Nothing to delete.\n");
+    else {
+        temp = head;
+        head = head->next;
+        printf("%d deleted from the list.\n", temp->data);
+        free(temp);
+    }
+}
+
+
+void display() {
+    struct Node *temp = head;
+    if (head == NULL)
+        printf("List is empty.\n");
+    else {
+        printf("Linked List: ");
+        while (temp != NULL) {
+            printf("%d -> ", temp->data);
+            temp = temp->next;
+        }
+        printf("NULL\n");
+    }
+}
+
+int main() {
+    int choice, value;
+
+    while (1) {
+        printf("\n--- Singly Linked List Operations ---\n");
+        printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                insert(value);
+                break;
+            case 2:
+                delete();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    }
+}
+
+
+Output:
+
+--- Singly Linked List Operations ---
+1. Insert
+2. Delete
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to insert: 10
+10 inserted into the list.
+
+Enter your choice: 1
+Enter value to insert: 20
+20 inserted into the list.
+
+Enter your choice: 3
+Linked List: 10 -> 20 -> NULL
+
+Enter your choice: 2
+10 deleted from the list.
+
+Enter your choice: 3
+Linked List: 20 -> NULL
+

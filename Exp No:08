@@ -89,26 +89,6 @@ int main() {
 }
 
 
-Output:
-
---- Singly Linked List Operations ---
-1. Insert
-2. Delete
-3. Display
-4. Exit
-Enter your choice: 1
-Enter value to insert: 10
-10 inserted into the list.
-
-Enter your choice: 1
-Enter value to insert: 20
-20 inserted into the list.
-
-Enter your choice: 3
-Linked List: 10 -> 20 -> NULL
-
-Enter your choice: 2
-10 deleted from the list.
 
 Enter your choice: 3
 Linked List: 20 -> NULL

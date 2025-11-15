@@ -95,38 +95,3 @@ int main() {
 }
 
 
-Output:
-
-Enter number of elements: 4
-Enter 4 elements: 10 20 30 40
-     
-      Array Operations 
-1. Display
-2. Insert
-3. Delete
-4. Search
-5. Exit
-Enter your choice: 1
-Array elements: 10 20 30 40
-
-Enter your choice: 2
-Enter position (1 to 5): 3
-Enter value to insert: 25
-Element inserted.
-
-Enter your choice: 1
-Array elements: 10 20 25 30 40
-
-Enter your choice: 3
-Enter position (1 to 5): 2
-Element deleted.
-
-Enter your choice: 1
-Array elements: 10 25 30 40
-
-Enter your choice: 4
-Enter element to search: 30
-Element found at position 3
-
-Enter your choice: 5
-Exiting program.

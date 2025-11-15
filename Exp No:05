@@ -70,28 +70,3 @@ int main() {
 }
 
 
-Output:
-
---- Queue Operations ---
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
-Enter your choice: 1
-Enter value to insert: 10
-10 inserted
-
-Enter your choice: 1
-Enter value to insert: 20
-20 inserted
-
-Enter your choice: 3
-Queue elements: 10 20
-
-Enter your choice: 2
-10 deleted
-
-Enter your choice: 3
-Queue elements: 20
-
-Enter your choice: 4

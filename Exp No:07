@@ -94,27 +94,4 @@ int main() {
 }
 
 
-Output:
-
---- Queue Menu ---
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
-Enter your choice: 1
-Enter value to insert: 10
-10 inserted into the queue.
-
-Enter your choice: 1
-Enter value to insert: 20
-20 inserted into the queue.
-
-Enter your choice: 3
-Queue elements: 10 -> 20 -> NULL
-
-Enter your choice: 2
-10 deleted from the queue.
-
-Enter your choice: 3
-Queue elements: 20 -> NULL
 

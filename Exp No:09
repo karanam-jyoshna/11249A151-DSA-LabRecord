@@ -123,28 +123,3 @@ int main() {
     return 0;
 }
 
-Output:
-
---- Doubly Linked List Menu ---
-1. Insert at End
-2. Delete from Beginning
-3. Display Forward
-4. Display Reverse
-5. Exit
-Enter your choice: 1
-Enter value to insert: 10
-10 inserted as first node.
-
-Enter your choice: 1
-Enter value to insert: 20
-20 inserted at the end.
-
-Enter your choice: 3
-Doubly Linked List (Forward): 10 <-> 20 <-> NULL
-
-Enter your choice: 4
-Doubly Linked List (Reverse): 20 <-> 10 <-> NULL
-
-Enter your choice: 2
-Node with value 10 deleted.
-
